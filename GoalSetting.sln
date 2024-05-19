@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoalSettingLibrary", "GoalSettingLibrary\GoalSettingLibrary.csproj", "{43DD3F74-776D-43B0-BE37-3A233BE8482A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoalSettingApplication", "GoalSettingApplication\GoalSettingApplication.csproj", "{64A71E07-D5D8-4C73-B68F-C80E01AAB52F}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "GoalSettingSetup", "GoalSettingSetup\GoalSettingSetup.vdproj", "{79922B52-14C5-45D1-B9E7-E78EE62F58B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{43DD3F74-776D-43B0-BE37-3A233BE8482A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43DD3F74-776D-43B0-BE37-3A233BE8482A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43DD3F74-776D-43B0-BE37-3A233BE8482A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43DD3F74-776D-43B0-BE37-3A233BE8482A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64A71E07-D5D8-4C73-B68F-C80E01AAB52F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64A71E07-D5D8-4C73-B68F-C80E01AAB52F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64A71E07-D5D8-4C73-B68F-C80E01AAB52F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64A71E07-D5D8-4C73-B68F-C80E01AAB52F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79922B52-14C5-45D1-B9E7-E78EE62F58B3}.Debug|Any CPU.ActiveCfg = Debug
+		{79922B52-14C5-45D1-B9E7-E78EE62F58B3}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8BB7CEBF-3641-4133-A64B-3207C10473C6}
+	EndGlobalSection
+EndGlobal
