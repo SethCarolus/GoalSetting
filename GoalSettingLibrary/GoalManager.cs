@@ -7,18 +7,14 @@ using System.Net;
 namespace GoalSettingLibrary
 {
 
-    public class GoalManager
+    public static class GoalManager
     {
 
-        public List<Goal> Goals;
+        public static List<Goal> Goals = GetGoalsFromDatabaseAsync().Result;
 
 
-        public Action GoalChangeHandler;
+        public static Action GoalChangeHandler;
 
-        public GoalManager() 
-        {
-            Goals = GetGoalsFromDatabase();
-        }
 
         private static string LoadConnectionString(string id = "Default")
         {
@@ -26,7 +22,7 @@ namespace GoalSettingLibrary
         }
 
 
-        public void AddGoalToDatabase(IGoal goal)
+        public static async Task AddGoalToDatabaseAsync(IGoal goal)
         {
             ArgumentNullException.ThrowIfNull(goal);
 
@@ -47,12 +43,12 @@ namespace GoalSettingLibrary
 
                 connection.Open();
 
-                connection.Execute(sql,goal);
+                await connection.ExecuteAsync(sql,goal);
             }
 
         }
 
-        public void RemoveGoalFromDatabase(IGoal goal)
+        public static async Task RemoveGoalFromDatabaseAsync(IGoal goal)
         {
             ArgumentNullException.ThrowIfNull(goal);
 
@@ -72,11 +68,11 @@ namespace GoalSettingLibrary
 
                 connection.Open();
 
-                connection.Execute(sql, goal);
+                await connection.ExecuteAsync(sql, goal);
             }
         }
 
-        public void UpdateGoalInDatabase(IGoal goal) 
+        public static async Task UpdateGoalInDatabaseAsync(IGoal goal) 
         {
             ArgumentNullException.ThrowIfNull(goal);
 
@@ -96,11 +92,11 @@ namespace GoalSettingLibrary
 
                 connection.Open();
 
-                connection.Execute(sql, goal);
+                await connection.ExecuteAsync(sql, goal);
             }
         }
 
-        private static List<Goal> GetGoalsFromDatabase()
+        private static async Task<List<Goal>> GetGoalsFromDatabaseAsync()
         {
             IEnumerable<Goal> goals;
 
@@ -112,7 +108,7 @@ namespace GoalSettingLibrary
             using (var connection = new SQLiteConnection(LoadConnectionString()))
             {
                 connection.Open();
-                goals = connection.Query<Goal>(sql);
+                goals = await connection.QueryAsync<Goal>(sql);
                 return (List<Goal>)goals;
             }
         }

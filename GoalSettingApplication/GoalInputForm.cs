@@ -22,7 +22,7 @@ namespace GoalSettingApplication
             InitializeComponent();
         }
 
-        private void InputFormCloseButton_Click(object sender, EventArgs e)
+        private async void InputFormCloseButton_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(tbGoalName.Text) || string.IsNullOrEmpty(tbDescription.Text))
             {
@@ -41,17 +41,20 @@ namespace GoalSettingApplication
             if (Data.GoalAction == GoalAction.Add)
             { 
             
-                Data.GoalManager.Goals.Add(goal);
-                Data.GoalManager.AddGoalToDatabase(goal);
+                GoalManager.Goals.Add(goal);
+                await GoalManager.AddGoalToDatabaseAsync(goal);
             }
             else if (Data.GoalAction == GoalAction.Edit)
             {
+
+                if (Data.GoalToEdit == null) throw new Exception("GoalToEdit should not be nulll");
+
                 goal.Id = Data.GoalToEdit.Id;
-                Data.GoalManager.Goals.Remove(Data.GoalToEdit as Goal);
-                Data.GoalManager.Goals.Add(goal);
-                Data.GoalManager.UpdateGoalInDatabase(goal);
+                GoalManager.Goals.Remove(Data.GoalToEdit as Goal);
+                GoalManager.Goals.Add(goal);
+                await GoalManager.UpdateGoalInDatabaseAsync(goal);
             }
-            Data.GoalManager.GoalChangeHandler.Invoke();
+            GoalManager.GoalChangeHandler.Invoke();
             Close();
         }
 

@@ -48,7 +48,7 @@ namespace GoalSettingApplication
         private void GoalSettingForm_Activated(object sender, EventArgs e)
         {
             DisplayGoals();
-            Data.GoalManager.GoalChangeHandler += DisplayGoals;
+            GoalManager.GoalChangeHandler += DisplayGoals;
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -56,7 +56,7 @@ namespace GoalSettingApplication
             IGoal selectedGoal;
             if (GoalListBox.SelectedIndex != -1)
             {
-                selectedGoal = Data.GoalManager.Goals[GoalListBox.SelectedIndex];
+                selectedGoal = GoalManager.Goals[GoalListBox.SelectedIndex];
 
                 goalNameLabel.Text = selectedGoal.GoalName;
 
@@ -87,7 +87,7 @@ namespace GoalSettingApplication
 
         }
 
-        private void RemoveGoalButton_Click(object sender, EventArgs e)
+        private async void RemoveGoalButton_Click(object sender, EventArgs e)
         {
             Data.GoalToEdit = null;
 
@@ -98,11 +98,11 @@ namespace GoalSettingApplication
                 return;
             }
 
-            Data.GoalManager.RemoveGoalFromDatabase(Data.GoalManager.Goals[GoalListBox.SelectedIndex]);
-            Data.GoalManager.Goals.RemoveAt(GoalListBox.SelectedIndex);
+            await GoalManager.RemoveGoalFromDatabaseAsync(GoalManager.Goals[GoalListBox.SelectedIndex]);
+            GoalManager.Goals.RemoveAt(GoalListBox.SelectedIndex);
             GoalListBox.Items.Clear();
 
-            foreach (var g in Data.GoalManager.Goals)
+            foreach (var g in GoalManager.Goals)
             {
                 GoalListBox.Items.Add(g.GoalName);
             }
@@ -113,9 +113,9 @@ namespace GoalSettingApplication
         private void DisplayGoals()
         {
             GoalListBox.Items.Clear();
-            for (int i = 0; i < Data.GoalManager.Goals.Count; i++)
+            for (int i = 0; i < GoalManager.Goals.Count; i++)
             {
-                GoalListBox.Items.Add(Data.GoalManager.Goals[i].GoalName);
+                GoalListBox.Items.Add(GoalManager.Goals[i].GoalName);
             }
 
             GoalListBox.SelectedIndex = GoalListBox.Items.Count - 1;
@@ -148,7 +148,7 @@ namespace GoalSettingApplication
             }
             int selectedGoalIndex = GoalListBox.SelectedIndex;
 
-            Data.GoalToEdit = Data.GoalManager.Goals[selectedGoalIndex];
+            Data.GoalToEdit = GoalManager.Goals[selectedGoalIndex];
 
 
             var goalInputForm = new GoalInputForm();
