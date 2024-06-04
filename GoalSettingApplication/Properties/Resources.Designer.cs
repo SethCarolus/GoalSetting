@@ -59,15 +59,5 @@ namespace GoalSettingApplication.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap png_transparent_x_cross_close_symbol_icon_button_gui_thumbnail {
-            get {
-                object obj = ResourceManager.GetObject("png-transparent-x-cross-close-symbol-icon-button-gui-thumbnail", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }

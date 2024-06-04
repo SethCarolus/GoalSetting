@@ -100,7 +100,7 @@ namespace GoalSettingLibrary
             }
         }
 
-        private List<Goal> GetGoalsFromDatabase()
+        private static List<Goal> GetGoalsFromDatabase()
         {
             IEnumerable<Goal> goals;
 

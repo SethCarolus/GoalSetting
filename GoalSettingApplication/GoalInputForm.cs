@@ -38,13 +38,13 @@ namespace GoalSettingApplication
             Goal goal = new(goalName, goalDueDate, goalDescription);
 
 
-            if (Data.goalAction == GoalAction.Add)
+            if (Data.GoalAction == GoalAction.Add)
             { 
             
                 Data.GoalManager.Goals.Add(goal);
                 Data.GoalManager.AddGoalToDatabase(goal);
             }
-            else if (Data.goalAction == GoalAction.Edit)
+            else if (Data.GoalAction == GoalAction.Edit)
             {
                 goal.Id = Data.GoalToEdit.Id;
                 Data.GoalManager.Goals.Remove(Data.GoalToEdit as Goal);

@@ -78,7 +78,7 @@ namespace GoalSettingApplication
         {
             Data.GoalToEdit = null;
 
-            Data.goalAction = GoalAction.Add;
+            Data.GoalAction = GoalAction.Add;
 
             var goalInputForm = new GoalInputForm();
             goalInputForm.Location = Location;
@@ -91,7 +91,7 @@ namespace GoalSettingApplication
         {
             Data.GoalToEdit = null;
 
-            Data.goalAction = GoalAction.Remove;
+            Data.GoalAction = GoalAction.Remove;
 
             if (GoalListBox.SelectedIndex == -1) 
             {
@@ -139,7 +139,7 @@ namespace GoalSettingApplication
 
         private void EditGoalButton_Click(object sender, EventArgs e)
         {
-            Data.goalAction = GoalAction.Edit;
+            Data.GoalAction = GoalAction.Edit;
 
             if (GoalListBox.SelectedIndex == -1)
             {

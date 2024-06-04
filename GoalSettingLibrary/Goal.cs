@@ -28,8 +28,11 @@ namespace GoalSettingLibrary
         /// Represents the description of the goal
         /// </summary>
         public string Description { get; set; }
-        
 
+        public Goal()
+        {
+            
+        }
 
         public Goal(int id, string name, DateOnly dueDate, string description)
         {
